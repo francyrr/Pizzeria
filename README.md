@@ -1,3 +1,10 @@
+****SEGUNDO COMMIT PERTENECE AL HITO 2 PIZZERIA LOGIN AND REGISTER COMPONENTS.****
+
+
+
+
+
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
