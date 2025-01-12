@@ -1,0 +1,83 @@
+.card-grid{
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 30px;
+    margin: 50px 50px 50px 90px;
+    
+  }
+  
+  .card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    width: 550px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+    
+  }
+  
+  .card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  }
+  
+  .card-img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+  }
+  
+  .card-content {
+    padding: 5px;
+    text-align: left;
+  }
+  
+ .card-title {
+    margin: 0 0 8px;
+    font-size: 1.5rem;
+    color: #333;
+    background: none;
+    text-transform: capitalize;
+  }
+  
+  .card-price {
+    margin: 0 0 12px;
+    font-size: 1.5rem;
+    color: black;
+    text-align: center;
+    font-weight: bold;
+  }
+  
+  .card-ingredients {
+    list-style: none;
+    margin: 10px;
+    display: flex;
+    color: #555;
+    text-align: center;
+    justify-content: center;
+    
+  }
+  
+  .card-ingredients li {
+    margin: 4px 3px;
+    font-size: 1rem;
+    color: #555;
+    text-align: center;
+    
+    
+  }
+  .card-hr {
+    height: 0.1px;
+    width: 100%;
+    background-color: gray;
+    border: none;
+    opacity: 40%;
+  }
+  .boton-card{
+    display: flex;
+    gap: 240px;
+    margin: 45px 50px 50px 50px;
+  
+  }

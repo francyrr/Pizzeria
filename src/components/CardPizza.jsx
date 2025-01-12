@@ -1,32 +1,28 @@
 import React from "react";
+import "../CardPizza.css";
 
-const CardPizza = ({ name, price, ingredients, img }) => {
+const CardPizza = ({ pizza }) => {
   return (
+    
     <div className="card">
-      <img src={img} alt={`${name}`} className="card-img" />
+      <img src={pizza.img} alt={pizza.name} className="card-img" />
       <div className="card-content">
-        <h3 className="card-title">{name}</h3>
-        <hr className="card-hr" />
-        <h4>
-          Ingredientes: <br />
-        </h4>
+        <h2 className="card-title">{pizza.name}</h2>
+        <p className="card-price">Precio: ${pizza.price.toLocaleString("es-CL")}</p>
         <ul className="card-ingredients">
-          🍕
-          {ingredients.map((ingredient, index) => (
-            <li key={index}>
-              {ingredient}
-              {index < ingredients.length - 1 && ","}
-            </li>
+        🍕
+          {pizza.ingredients.map((ingredient, index) => (
+            <li key={index}>{ingredient} {index < pizza.ingredients.length - 1 && ","}</li>
           ))}
         </ul>
         <hr className="card-hr" />
-        <p className="card-price">Precio: ${price.toLocaleString("es-CL")}</p>
         <div className="boton-card">
-          <button className="ver">Ver Más 👀</button>
-          <button className="añadir"> Añadir🛒 </button>
+          <button className="ver">Ver más 👀</button>
+          <button className="añadir">Añadir 🛒</button>
         </div>
       </div>
     </div>
+    
   );
 };
 
