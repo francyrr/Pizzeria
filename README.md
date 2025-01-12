@@ -1,4 +1,7 @@
-****SEGUNDO COMMIT PERTENECE AL HITO 2 PIZZERIA LOGIN AND REGISTER COMPONENTS.****
+Cambiar entre <Home/> y <Cart/> en App.jsx para ver las renderizaciones correspondientes.
+
+****TERCER COMMIT >>> Renderización dinámica de
+componentes.****
 
 
 
