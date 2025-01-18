@@ -78,6 +78,10 @@
   .boton-card{
     display: flex;
     gap: 240px;
-    margin: 45px 50px 50px 50px;
+    margin: 45px 50px 50px 205px;
   
+  }
+
+  button{
+    padding: 10px;
   }
