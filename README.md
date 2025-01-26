@@ -1,8 +1,4 @@
-Cambiar entre <Home/> y <Cart/> en App.jsx para ver las renderizaciones correspondientes.
-
-****TERCER COMMIT >>> Renderización dinámica de
-componentes.****
-
+Actualización a React-Router
 
 
 
