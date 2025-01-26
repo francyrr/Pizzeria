@@ -1,10 +1,10 @@
 import "./App.css";
-import Cart from "../src/assets/Pages/Cart";
+import Cart from "../src/Pages/Cart";
 import Navbar from "./components/Navbar";
-import Home from "../src/assets/Pages/Home";
-import LoginPage from "../src/assets/Pages/LoginPage";
-import RegisterPage from "../src/assets/Pages/RegisterPage";
-import Pizza from "../src/assets/Pages/Pizza";
+import Home from "../src/Pages/Home";
+import LoginPage from "../src/Pages/LoginPage";
+import RegisterPage from "../src/Pages/RegisterPage";
+import Pizza from "../src/Pages/Pizza";
 import Footer from "./components/Footer";
 import { Route, Routes } from "react-router-dom";
 import NotFound from "./components/NotFound";
