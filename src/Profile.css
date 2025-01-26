@@ -1,0 +1,21 @@
+.profile{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 50px;
+    margin: 10px;
+    background-image: url(./assets/img/Header.jpg);
+    color: white;
+    padding: 280px;
+}
+.btn-profile{
+    font-size: 20px;
+    border-radius: 5px;
+    padding: 15px 35px;
+}
+.btn-profile:hover{
+    background-color: #b11d2a;
+    color: white;
+    transition: 0.3s;
+}

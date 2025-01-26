@@ -81,7 +81,7 @@ hr {
 .total-btn {
   border-color: #0ad7e6;
   color: #0ad7e6;
-  margin-left: auto;
+  margin-left: 1400px;
 }
 .navbar-texto{
   color: white;
@@ -113,7 +113,7 @@ h4{
   text-align: center;
 }
 form{
-  margin: 70px 550px;
+  margin: 170px 550px;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -127,6 +127,7 @@ text-align: center;
 background-image: url(./assets/img/Header.jpg);
 color: #fff;
 font-size: 40px;
+padding: 30px;
 }
 input{
   padding: 19px;

@@ -1,7 +1,7 @@
 import React from "react";
-import "../CardPizza.css";
+import "../../CardPizza.css";
 
-const CardPizza = ({ pizza }) => {
+const CardPizza = ({ pizza }) => { 
   return (
     
     <div className="card">
@@ -22,6 +22,7 @@ const CardPizza = ({ pizza }) => {
         </div>
       </div>
     </div>
+    
     
   );
 };

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "../CardPizza.css";
+import "../../CardPizza.css";
 
 const Home = () => {
   const [pizzas, setPizzas] = useState([]);

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "../Pizza.css"; 
+import "../../Pizza.css"; 
 
 const Pizza = () => {
   const [pizza, setPizza] = useState(null);

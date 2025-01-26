@@ -1,0 +1,30 @@
+.not-found{
+    background-image: url(../src/assets/img/page-not-found-404-page-not-found.png);
+    background-size: 800px;
+    background-repeat: no-repeat;
+    margin: 0px;
+    padding: 400px;
+    background-position: center;
+    
+}
+.btn-notfound{
+    margin-left: 850px;
+    margin-right: 850px;
+    font-size: 25px;
+    border-radius: 5px;
+    padding: 15px 35px;
+}
+.btn-notfound:hover{
+    background-color: #043a7c;
+    color: white;
+    transition: 0.3s;
+    
+}
+.notfound-container{
+    display: flex;
+    flex-direction: column;
+    background-color: #f0f5fb;
+    align-items: center;
+    overflow-y:hidden !important;
+    
+}

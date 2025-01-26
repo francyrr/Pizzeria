@@ -1,35 +1,27 @@
-import React, { useState } from "react";
+import React from "react";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
-  const [token, setToken] = useState(false);
   const total = 25000;
-
-  const toggleToken = () => {
-    setToken(!token);
-  };
 
   return (
     <nav className="navbar">
       <p className="navbar-texto">Pizzería Mamma Mia!</p>
-      <button className="btn home-btn">🍕 Home</button>
-
-      {token ? (
-        <>
-          <button className="btn profile-btn">🔒 Profile</button>
-          <button className="btn logout-btn" onClick={toggleToken}>
-            🔐 Logout
-          </button>
-        </>
-      ) : (
-        <>
-          <button className="btn login-btn" onClick={toggleToken}>
-            🔐 Login
-          </button>
-          <button className="btn register-btn">🔐 Register</button>
-        </>
-      )}
-
-      <button className="btn total-btn">🛒 Total: ${total.toLocaleString('es-CL')}</button>
+      <Link to="/">
+        <button className="btn home-btn">🍕 Home</button>
+      </Link>
+      <Link to="/login">
+        <button className="btn login-btn">🔐 Login</button>
+      </Link>
+      <Link to="/register">
+        <button className="btn register-btn">🔐 Register</button>
+      </Link>
+      <Link to="/profile">
+        <button className="btn profile-btn">🔒 Profile</button>
+      </Link>
+      <Link to="/cart">
+        <button className="btn total-btn">🛒 Total: ${total.toLocaleString("es-CL")}</button>
+      </Link>
     </nav>
   );
 };
