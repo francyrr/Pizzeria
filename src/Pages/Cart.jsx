@@ -3,7 +3,20 @@ import { useCart } from "../Context/CartContext";
 import "../../src/Cart.css";
 
 const Cart = () => {
-  const { cart, removeFromCart, updateQuantity, total } = useCart(); 
+  const { cart, removeFromCart, updateQuantity, total, clearCart } = useCart(); 
+
+  const handlePay = () => {
+    if (cart.length === 0) {
+      alert("El carrito está vacío. Agrega productos antes de pagar.");
+      return;
+    }
+
+    const confirmPayment = window.confirm("¿Estás seguro de que deseas realizar el pago?");
+    if (confirmPayment) {
+      clearCart(); 
+      alert("¡Gracias por tu compra!");
+    }
+  };
 
   return (
     <div className="cart-container">
@@ -19,7 +32,13 @@ const Cart = () => {
             <div className="cart-item-quantity">
               <button
                 className="decrease"
-                onClick={() => updateQuantity(pizza.id, pizza.quantity - 1)}
+                onClick={() => {
+                  if (pizza.quantity === 1) {
+                    removeFromCart(pizza.id);
+                  } else {
+                    updateQuantity(pizza.id, pizza.quantity - 1);
+                  }
+                }}
               >
                 -
               </button>
@@ -36,7 +55,7 @@ const Cart = () => {
         ))}
       </div>
       <h3 className="cart-total">Total: ${total.toLocaleString("es-CL")}</h3>
-      <button className="cart-pay-button" onClick={() => alert("¡Gracias por tu compra!")}>Pagar</button>
+      <button className="cart-pay-button" onClick={handlePay}>Pagar</button>
     </div>
   );
 };
