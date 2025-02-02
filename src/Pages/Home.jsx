@@ -1,21 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
+import { usePizza } from "../Context/PizzaContext"; 
+import { useCart } from "../Context/CartContext"; 
 import "../../src/CardPizza.css";
 
 const Home = () => {
-  const [pizzas, setPizzas] = useState([]);
+  const { pizzas, loading } = usePizza(); 
+  const { addToCart } = useCart(); 
 
-  const url = "http://localhost:5000/api/pizzas";
-  const getData = async () => {
-  const response = await fetch(url);
-  const data = await response.json();
-    setPizzas(data);
-  };
-
-  useEffect(() => {
-    getData();
-  }, []);
-
-  if (pizzas.length === 0) {
+  if (loading) {
     return <p>Cargando pizzas...</p>;
   }
 
@@ -34,7 +26,7 @@ const Home = () => {
             </ul>
             <div className="card-hr"></div>
             <div className="boton-card">
-              <button>Añadir al carrito</button>
+              <button onClick={() => addToCart(pizza)}>Añadir al carrito</button>
             </div>
           </div>
         </div>

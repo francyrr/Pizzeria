@@ -1,20 +1,22 @@
 import React, { useEffect, useState } from "react";
-import "../Pizza.css"; 
+import { usePizza } from "../Context/PizzaContext";
+import { useCart } from "../Context/CartContext";
+import "../Pizza.css";
 
 const Pizza = () => {
   const [pizza, setPizza] = useState(null);
+  const { fetchPizzaById } = usePizza();
+  const { addToCart } = useCart();
 
   const id = "p001"; 
-  const url = `http://localhost:5000/api/pizzas/${id}`;
-  const getData = async () => {
-    const response = await fetch(url);
-    const data = await response.json();
-    setPizza(data);
-  };
 
   useEffect(() => {
-    getData();
-  }, []);
+    const getPizza = async () => {
+      const data = await fetchPizzaById(id); 
+      setPizza(data);
+    };
+    getPizza();
+  }, [id, fetchPizzaById]);
 
   if (!pizza) {
     return <p>Cargando pizza...</p>;
@@ -23,14 +25,8 @@ const Pizza = () => {
   return (
     <div className="pizza-container">
       <h1 className="pizza-name">{pizza.name}</h1>
-      <img
-        src={pizza.img}
-        alt={pizza.name}
-        className="pizza-image"
-      />
-      <p className="pizza-description">
-         {pizza.desc}
-      </p>
+      <img src={pizza.img} alt={pizza.name} className="pizza-image" />
+      <p className="pizza-description">{pizza.desc}</p>
       <p><strong>Ingredientes:</strong></p>
       <ul className="pizza-ingredients">
         {pizza.ingredients.map((ingredient, index) => (
@@ -40,7 +36,7 @@ const Pizza = () => {
       <p className="pizza-price">
         <strong>Precio:</strong> ${pizza.price.toLocaleString("es-CL")}
       </p>
-      <button className="pizza-button">Añadir al carrito</button>
+      <button className="pizza-button" onClick={() => addToCart(pizza)}>Añadir al carrito</button>
     </div>
   );
 };
