@@ -10,6 +10,10 @@
     padding: 280px;
     padding-bottom: 334px;
 }
+.profile-container{
+    margin-top: 100px;
+    margin-bottom: 450px;
+}
 .btn-profile{
     font-size: 20px;
     border-radius: 5px;
@@ -19,4 +23,12 @@
     background-color: #b11d2a;
     color: white;
     transition: 0.3s;
+}
+.profile-text{
+display: flex;
+flex-direction: column;
+align-items: center;
+}
+.profile-text p{
+    font-size: 30px;
 }

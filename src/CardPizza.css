@@ -75,13 +75,16 @@
     border: none;
     opacity: 40%;
   }
-  .boton-card{
+  .btn-card{
     display: flex;
-    gap: 240px;
-    margin: 45px 50px 50px 205px;
+    gap: 260px;
+    margin: 25px;
+
   
   }
 
-  button{
-    padding: 10px;
+  .ver{
+text-decoration: none;
+
   }
+  

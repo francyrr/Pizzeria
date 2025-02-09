@@ -1,19 +1,27 @@
 import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import { usePizza } from "../Context/PizzaContext";
 import { useCart } from "../Context/CartContext";
 import "../Pizza.css";
 
 const Pizza = () => {
+  const { id } = useParams();
   const [pizza, setPizza] = useState(null);
   const { fetchPizzaById } = usePizza();
   const { addToCart } = useCart();
 
-  const id = "p001"; 
-
   useEffect(() => {
     const getPizza = async () => {
-      const data = await fetchPizzaById(id); 
-      setPizza(data);
+      try {
+        const data = await fetchPizzaById(id);
+        if (data) {
+          setPizza(data);
+        } else {
+          console.error("No se encontró la pizza");
+        }
+      } catch (error) {
+        console.error("Error al obtener la pizza:", error);
+      }
     };
     getPizza();
   }, [id, fetchPizzaById]);

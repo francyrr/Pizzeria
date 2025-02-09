@@ -1,15 +1,19 @@
 import React, { useState } from "react";
+import { useUser } from "../Context/UserContext";
+import { Navigate } from "react-router-dom";
 
 function RegisterPage() {
+  const { token } = useUser();
+
+  if (token) return <Navigate to="/" />;
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  
 
   function handleRegister(event) {
     event.preventDefault(); 
-    
+
     if (!email.trim() || !password.trim() || !confirmPassword.trim()) {
       alert("Todos los campos son obligatorios ⛔");
     } else if (password.length < 6) {
@@ -23,11 +27,12 @@ function RegisterPage() {
       setConfirmPassword("");
     }
   }
+
   return (
     <div>
-      <h2>¡¡ Registrate para recibir ofertas y promociones !!</h2>
+      <h2>¡¡ Regístrate para recibir ofertas y promociones !!</h2>
       <form onSubmit={handleRegister}>
-      Email 📧
+        Email 📧
         <input
           type="email"
           placeholder="Ingresa tu Email"
@@ -48,11 +53,10 @@ function RegisterPage() {
           value={confirmPassword}
           onChange={(e) => setConfirmPassword(e.target.value)}
         />
-        <button className="register2-btn"type="submit">Registrar</button>
+        <button className="register2-btn" type="submit">Registrar</button>
       </form>
     </div>
   );
 }
 
 export default RegisterPage;
-

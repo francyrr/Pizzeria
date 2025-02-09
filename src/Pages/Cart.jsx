@@ -1,9 +1,11 @@
 import React from "react";
 import { useCart } from "../Context/CartContext"; 
+import { useUser } from "../Context/UserContext";
 import "../../src/Cart.css";
 
 const Cart = () => {
   const { cart, removeFromCart, updateQuantity, total, clearCart } = useCart(); 
+  const { token } = useUser();
 
   const handlePay = () => {
     if (cart.length === 0) {
@@ -55,7 +57,12 @@ const Cart = () => {
         ))}
       </div>
       <h3 className="cart-total">Total: ${total.toLocaleString("es-CL")}</h3>
-      <button className="cart-pay-button" onClick={handlePay}>Pagar</button>
+
+      <button className="cart-pay-button" onClick={handlePay} disabled={!token}>
+        Pagar
+      </button>
+
+      {!token && <p style={{ color: "red" }}>🔒 Debes iniciar sesión para pagar.</p>}
     </div>
   );
 };
