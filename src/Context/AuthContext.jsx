@@ -40,10 +40,9 @@ export const AuthProvider = ({ children }) => {
       });
 
       const responseData = await response.json();
-      console.log("📡 Respuesta del backend:", responseData);
 
       if (!response.ok) {
-        throw new Error(responseData.message || "Error en login");
+        throw new Error(responseData.message || "❌ Usuario no registrado");
       }
 
       const { token, email: userEmail } = responseData;
@@ -52,7 +51,7 @@ export const AuthProvider = ({ children }) => {
       setToken(token);
       setUser({ email: userEmail });
     } catch (error) {
-      console.error("❌ Error en login:", error);
+      console.error("❌ Usuario no registrado:", error);
       throw error;
     }
   };
