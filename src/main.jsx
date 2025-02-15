@@ -6,17 +6,20 @@ import { CartProvider } from "../src/Context/CartContext.jsx";
 import "./index.css";
 import { PizzaProvider } from "./Context/PizzaContext.jsx";
 import { UserContext, UserProvider } from "./Context/UserContext.jsx";
+import { AuthProvider } from "./Context/AuthContext.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <BrowserRouter>
-      <UserProvider>
-        <PizzaProvider>
-          <CartProvider>
-            <App />
-          </CartProvider>
-        </PizzaProvider>
-      </UserProvider>
+      <AuthProvider>
+        <UserProvider>
+          <PizzaProvider>
+            <CartProvider>
+              <App />
+            </CartProvider>
+          </PizzaProvider>
+        </UserProvider>
+      </AuthProvider>
     </BrowserRouter>
   </React.StrictMode>
 );

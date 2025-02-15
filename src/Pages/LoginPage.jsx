@@ -1,57 +1,60 @@
 import React, { useState } from "react";
-import { useUser } from "../Context/UserContext";
+import { useAuth } from "../Context/AuthContext"; 
 import { Navigate } from "react-router-dom";
 
 function LoginPage() {
-  const { token, login } = useUser();
-  const [name, setName] = useState("");
+  const { token, login } = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
   if (token) return <Navigate to="/profile" />;
 
-  function handleLogin(event) {
+  async function handleLogin(event) {
     event.preventDefault();
+    setError("");
+    setLoading(true);
 
-    if (!name.trim() || !email.trim() || !password.trim()) {
-      alert("Todos los campos son obligatorios ⛔");
-    } else if (password.length < 6) {
-      alert("La contraseña debe tener al menos 6 caracteres ❌");
-    } else {
-      alert(`Bienvenido, ${name}! ✅`);
-      login(name, email);
-      setName("");
-      setEmail("");
-      setPassword("");
+    if (!email.trim() || !password.trim()) {
+      setError("❌ Todos los campos son obligatorios.");
+      setLoading(false);
+      return;
+    }
+
+    try {
+      await login(email, password);
+    } catch (err) {
+      setError(err.message || "❌ Error al iniciar sesión. Verifica tus credenciales.");
+    } finally {
+      setLoading(false);
     }
   }
 
   return (
     <div>
-      <h2>Iniciar sesión</h2>
+      <h2>🔑 Iniciar sesión</h2>
+      {error && <p style={{ color: "red" }}>{error}</p>}
       <form onSubmit={handleLogin}>
-        Nombre 📝
-        <input
-          type="text"
-          placeholder="Ingresa tu nombre"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
-        Email 📧
+        <label>Email 📧</label>
         <input
           type="email"
           placeholder="Ingresa tu Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
-        Contraseña 🔐
+
+        <label>Contraseña 🔐</label>
         <input
           type="password"
           placeholder="Ingresa tu contraseña"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button className="login2-btn" type="submit">Ingresar</button>
+
+        <button className="login2-btn" type="submit" disabled={loading}>
+          {loading ? "Cargando..." : "Ingresar"}
+        </button>
       </form>
     </div>
   );

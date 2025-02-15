@@ -1,36 +1,45 @@
 import React, { useState } from "react";
-import { useUser } from "../Context/UserContext";
+import { useAuth } from "../Context/AuthContext"
 import { Navigate } from "react-router-dom";
 
 function RegisterPage() {
-  const { token } = useUser();
-
-  if (token) return <Navigate to="/" />;
-
+  const { token, register } = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [error, setError] = useState("");
 
-  function handleRegister(event) {
-    event.preventDefault(); 
+  if (token) return <Navigate to="/profile" />;
+
+  async function handleRegister(event) {
+    event.preventDefault();
 
     if (!email.trim() || !password.trim() || !confirmPassword.trim()) {
-      alert("Todos los campos son obligatorios ⛔");
-    } else if (password.length < 6) {
-      alert("La contraseña debe tener al menos 6 caracteres ❌");
-    } else if (password !== confirmPassword) {
-      alert("Las contraseñas no coinciden❌");
-    } else {
-      alert("Registro exitoso ✅");
-      setEmail("");
-      setPassword("");
-      setConfirmPassword("");
+      setError("Todos los campos son obligatorios ⛔");
+      return;
+    }
+
+    if (password.length < 6) {
+      setError("La contraseña debe tener al menos 6 caracteres ❌");
+      return;
+    }
+
+    if (password !== confirmPassword) {
+      setError("Las contraseñas no coinciden ❌");
+      return;
+    }
+
+    try {
+      await register(email, password);
+    } catch (err) {
+      setError("Error al registrar ❌. Inténtalo de nuevo.");
     }
   }
 
   return (
     <div>
       <h2>¡¡ Regístrate para recibir ofertas y promociones !!</h2>
+      {error && <p style={{ color: "red" }}>{error}</p>}
       <form onSubmit={handleRegister}>
         Email 📧
         <input
